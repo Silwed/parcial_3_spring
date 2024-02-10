@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.5.final using JasperReports Library version 6.20.5-3efcf2e67f959db3888d79f73dde2dbd7acb4f8e  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="grafica_constancia" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9d3d9f59-c11e-49f3-961d-d03308a948aa">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="db_constancia"/>
+	<queryString language="SQL">
+
+	</queryString>
+	<field name="tipoVehiculo" class="java.lang.Integer"/>
+
+
+	<field name="cantidadDistribucion" class="java.lang.Long"/>
+
+	<field name="fecha_distribucion" class="java.sql.Timestamp"/>
+
+	<field name="tipo_producto" class="java.lang.Integer"/>
+
+	<field name="totalVenta" class="java.lang.Double"/>
+
+	<field name="zona" class="java.lang.String"/>
+
+	<group name="zona">
+		<groupExpression><![CDATA[$F{zona}]]></groupExpression>
+	</group>
+	<group name="tipoVehiculo">
+		<groupExpression><![CDATA[$F{tipoVehiculo}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="79" uuid="48b4b43f-bebd-4785-8219-254a3eea8f9d"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="79" uuid="732ea56b-6e5e-4341-9623-ade7d8869e71"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="22"/>
+				</textElement>
+				<text><![CDATA[Grafico de ventas por zonas ]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="35" uuid="d9a0e5c3-1497-47a5-9301-168c5e9e3ab4"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Detalle de ventas efectuadas por las distintos tipos de ventas]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="52">
+			<staticText>
+				<reportElement x="75" y="22" width="100" height="30" uuid="25b89e2f-1490-4b4e-bfde-b8c10d6a00d7"/>
+				<text><![CDATA[Zona]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="20" width="100" height="30" uuid="58739ab0-74bd-49f0-866f-5b4c941e0756"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="50">
+			<textField>
+				<reportElement x="76" y="16" width="100" height="30" uuid="e46707c2-fc0d-4d32-b1c0-2121352810a5"/>
+				<textFieldExpression><![CDATA[$F{zona}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="308" y="15" width="100" height="30" uuid="5d00e895-373b-456d-80fe-439e4fc23c7b"/>
+				<textFieldExpression><![CDATA[$F{totalVenta}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="255" splitType="Stretch">
+			<barChart>
+				<chart evaluationTime="Report">
+					<reportElement x="0" y="0" width="555" height="255" uuid="45c20f99-a952-4d73-bba3-eabc1056f27a"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{zona}]]></seriesExpression>
+						<categoryExpression><![CDATA[0]]></categoryExpression>
+						<valueExpression><![CDATA[$F{totalVenta}]]></valueExpression>
+						<labelExpression><![CDATA[$F{zona}]]></labelExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+		</band>
+	</summary>
+</jasperReport>
